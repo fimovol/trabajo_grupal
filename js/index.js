@@ -21,7 +21,7 @@ let root = document.getElementById("root")
     boton_eliminars.setAttribute("id","boton_eliminar")
     boton_eliminars.innerText = `eliminar`
 
-    root.insertAdjacentElement("",button_crear)
+    root.insertAdjacentElement("afterend",button_crear)
     root.insertAdjacentElement("afterend",button_actali)
     root.insertAdjacentElement("afterend",boton_eliminars)
     
@@ -58,8 +58,7 @@ function nuevousuario(){
     if(asd!=null){
         let separado = asd.split(",")
         let objeto = {
-            id: users.length + 1,
-            
+            id: idunico(),
         }
         objeto.nombre = separado[0]
         objeto.apellido = separado[1]
@@ -70,6 +69,14 @@ function nuevousuario(){
        
     }
     return users
+}
+function idunico(){
+    let array = []
+    users.map((elemento)=> {
+        array.push(elemento.id)
+    })
+    let numeromayor = Math.max(...array)
+    return numeromayor + 1
 }
 
 
